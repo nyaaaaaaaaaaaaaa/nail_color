@@ -1,0 +1,39 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-2 border border-dark">
+      ダグ検索</br>
+      <%= form_tag(tags_path, method: :get) do %>
+      <% Tag.all.each do |t| %>
+      <li><%= check_box :tag_id, t.name %><%= t.name %></li></br>
+      <% end %>
+      <%= submit_tag '検索' %>
+      <% end %>
+    </div>
+    <div class = "col-md-10 py-3">
+      <div class = "col-md-1 py-3"></div>
+      <div class = "col-md-8 py-3">
+        <h4>検索結果一覧（全<%= @items.count %>件）</h4>
+      </div>
+      <div class = "col-md-1 py-3"></div>
+      <div class = "row">
+        <% @items.each do |item| %>
+          <div class = "col-md-2 py-3">
+          <% if item.image.attached? %>
+          <%= link_to item_path(item) do %>
+            <%= image_tag item.image, size: "90x120" %>
+          <% end %>
+          <% else %>
+          <%= link_to item_path(item) do %>
+            <%= image_tag 'no_image', size: "90x120" %>
+          <% end %>
+          <% end %></br>
+          <%= item.created_at.strftime('%Y/%m/%d') %></br>
+          ♥<%= item.favorites.count %> いいね</br>
+          <%= item.customer.name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

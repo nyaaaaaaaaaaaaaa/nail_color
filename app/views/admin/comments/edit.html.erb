@@ -1,0 +1,37 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3 mx-auto"></div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <h4>コメント編集</h4>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto">ユーザーネーム</div>
+    <div class = "col-md-3 py-3 mx-auto"><%= @customer.name %></div>
+    <div class = "col-md-5 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto">コメント日</div>
+    <div class = "col-md-3 py-3 mx-auto"><%= @comment.created_at.strftime('%Y/%m/%d') %></div>
+    <div class = "col-md-5 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto">コメント内容</div>
+    <div class = "col-md-3 py-3 mx-auto"><%= @comment.comment %></div>
+    <div class = "col-md-5 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <p style = "line-height:2rem"></p>
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto">
+      <%= link_to admin_item_comment_path(@comment.item.id, @comment.id), method: :delete, class: "btn btn-sm btn-warning btn-text-light" do %>
+      コメントを削除する
+      <% end %>
+    </div>
+    <div class = "col-md-5 py-3 mx-auto"></div>
+  </div>
+</div>

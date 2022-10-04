@@ -1,0 +1,19 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3 mx-auto"></div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <h4>コメント編集</h4>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-6 py-3 mx-auto">
+      <%= form_with model: @comment, url: item_comment_path(@comment), method: :patch do |f| %>
+        <%= f.text_area :comment, rows: '5' %>
+        <%= f.submit '登録情報の変更', class: "btn btn-sm btn-success btn-text-light" %>
+      <% end %>
+    </div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+</div>

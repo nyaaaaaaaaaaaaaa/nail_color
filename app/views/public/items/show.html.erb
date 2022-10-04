@@ -1,0 +1,86 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3 mx-auto"></div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <h4>投稿詳細</h4>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-4 py-3 mx-auto">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "300x500" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "300x500" %>
+      <% end %>
+    </div>
+    <div class = "col-md-8 py-3 mx-auto">
+      <div class = "row">
+        <div class = "col-md-8 py-3 mx-auto"></div>
+      </div>
+      <div class = "row">
+        <div class = "col-md-3 py-3 mx-auto">投稿者</div>
+        <div class = "col-md-3 py-3 mx-auto"><%= @item.customer.name %></div>
+        <div class = "col-md-2 py-3 mx-auto"></div>
+      </div>
+      <div class = "row">
+        <div class = "col-md-3 py-3 mx-auto">投稿日</div>
+        <div class = "col-md-3 py-3 mx-auto"><%= @item.created_at.strftime('%Y/%m/%d') %></div>
+        <div class = "col-md-2 py-3 mx-auto"></div>
+      </div>
+      <div class = "row">
+        <div class = "col-md-3 py-3 mx-auto">商品名</div>
+        <div class = "col-md-3 py-3 mx-auto"><%= @item.name %></div>
+        <div class = "col-md-2 py-3 mx-auto"></div>
+      </div>
+      <div class = "row">
+        <div class = "col-md-3 py-3 mx-auto">タグ</div>
+        <div class = "col-md-3 py-3 mx-auto"><%= @item.tag.name %></div>
+        <div class = "col-md-2 py-3 mx-auto"></div>
+      </div>
+      <div class = "row">
+        <div class = "col-md-3 py-3 mx-auto">商品説明</div>
+        <div class = "col-md-3 py-3 mx-auto"><%= @item.introduction %></div>
+        <div class = "col-md-2 py-3 mx-auto"></div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-3 py-3 mx-auto">
+    <% if @item.favorited_by?(current_customer) %>
+      <p>
+      <%= link_to item_favorites_path(@item), method: :delete do %>
+        ♥<%= @item.favorites.count %> いいね
+      <% end %>
+      </p>
+      <% else %>
+      <p>
+      <%= link_to item_favorites_path(@item), method: :post do %>
+        ♡<%= @item.favorites.count %> いいね
+      <% end %>
+      </p>
+    <% end %>
+    </div>
+    <div class = "col-md-3 py-3 mx-auto">
+      <%= link_to new_item_comment_path(@item.id), class: "btn btn-sm btn-info btn-text-light" do %>
+      コメントする
+      <% end %>
+    </div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3 mx-auto">コメント件数：<%= @item.comments.count %></div>
+    <div class = "col-md-3 py-3 mx-auto">コメント日</div>
+    <div class = "col-md-3 py-3 mx-auto">ユーザーネーム</div>
+    <div class = "col-md-4 py-3 mx-auto">コメント内容</div>
+  </div>
+  <div class = "row">
+    <% @item.comments.each do |comment| %>
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-3 py-3 mx-auto"><%= comment.created_at.strftime('%Y/%m/%d') %></div>
+    <div class = "col-md-3 py-3 mx-auto"><%= comment.customer.name %></div>
+    <div class = "col-md-4 py-3 mx-auto"><%= comment.comment %></div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3 mx-auto"></div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <h4>登録情報編集</h4>
+    </div>
+  </div>
+  <%= form_with model: @customer, url: customers_information_edit_path, method: :patch do |f| %>
+  <div class = "field">
+    <div class = "row">
+      <div class = "col-md-2 py-3 mx-auto"></div>
+      <div class = "col-md-2 py-3 mx-auto"><%= f.label :ユーザーネーム %></div>
+      <div class = "col-md-3 py-3 mx-auto"><%= f.text_field :name, size: "60×20" %></div>
+      <div class = "col-md-5 py-3 mx-auto"></div>
+    </div>
+    <div class = "row">
+      <div class = "col-md-2 py-3 mx-auto"></div>
+      <div class = "col-md-2 py-3 mx-auto"><%= f.label :メールアドレス %></div>
+      <div class = "col-md-3 py-3 mx-auto"><%= f.text_field :email, size: "60×20" %></div>
+      <div class = "col-md-5 py-3 mx-auto"></div>
+    </div>
+    <div class = "row">
+      <div class = "col-md-4 py-3 mx-auto"></div>
+      <div class = "col-md-3 py-3 mx-auto"><%= f.submit '登録情報の変更', class: "btn btn-sm btn-success btn-text-light" %></div>
+  <% end %>
+      <div class = "col-md-1 py-3 mx-auto"></div>
+      <div class = "col-md-4 py-3 mx-auto">
+        <%= link_to customers_unsubscribe_path, class: "btn btn-sm btn-danger btn-text-light" do %>
+        退会する
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

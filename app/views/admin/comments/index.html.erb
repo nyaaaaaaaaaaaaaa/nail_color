@@ -1,0 +1,22 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3"></div>
+      <div class = "col-md-8 py-3">
+        <h4>コメント履歴一覧（全<%= @comments.count %>件）</h4>
+      </div>
+  </div>
+  <div class = "row">
+    <table class = "table">
+      <% @comments.each do |comment| %>
+      <tbody>
+        <tr>
+          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to comment.item.name, admin_item_path(comment.item.id) %></td>
+          <td><%= link_to comment.comment, edit_admin_item_comment_path(comment.item.id,comment.id) %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

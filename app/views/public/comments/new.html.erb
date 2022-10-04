@@ -1,0 +1,19 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3 mx-auto"></div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <h4>コメント投稿</h4>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-6 py-3 mx-auto">
+      <%= form_with model: @comment, url: item_comments_path, method: :post do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+</div>

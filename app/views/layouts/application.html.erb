@@ -2,15 +2,49 @@
 <html>
   <head>
     <title>NailColor</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+      <header class="<%= (admin_signed_in? ? "admin_header" : "" ) %>, shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><%= link_to 'NailColor', (admin_signed_in? ? admin_items_path : root_path ), class: "logo" %></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+              <li class="nav-item"><%= link_to '投稿一覧',  admin_items_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item"><%= link_to 'コメント一覧',  admin_comments_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item"><%= link_to '会員一覧',  admin_customers_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item"><%= link_to 'タグ一覧',  admin_tags_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+            <% elsif current_customer %>
+              <p>ようこそ、<%= current_customer.name %> さん!</p>
+              <li class="nav-item"><%= link_to 'マイページ', customers_my_page_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item"><%= link_to '投稿一覧', items_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item"><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+            <% else %>
+              <li class="nav-item"><%= link_to 'Topページ', root_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path, class: 'nav-link text-dark' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+    <footer class="bg-dark text-white footer mt-auto py-3">
+      <div class="container">
+        <span class="">NailColor</span>
+      </div>
+    </footer>
   </body>
 </html>

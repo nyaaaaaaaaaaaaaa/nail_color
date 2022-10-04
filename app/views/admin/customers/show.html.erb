@@ -1,0 +1,60 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3 mx-auto"></div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <h4><%= @customer.name %>さんの詳細画面</h4>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-3 py-3 mx-auto">ユーザーネーム</div>
+    <div class = "col-md-3 py-3 mx-auto"><%= @customer.name %></div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-3 py-3 mx-auto">メールアドレス</div>
+    <div class = "col-md-3 py-3 mx-auto"><%= @customer.email %></div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+  <p style = "line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-3 py-3 mx-auto">会員ステータス</div>
+    <div class = "col-md-3 py-3 mx-auto">
+      <%if @customer.is_deleted %>
+      <span style = "color:gray">退会</span>
+      <% else %>
+      <span style = "color:green">有効</span>
+      <% end %>
+    </div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+  <p style = "line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-3 py-3 mx-auto">投稿一覧</div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3"></div>
+    <% @items.each do |item| %>
+      <div class = "col-md-2 py-3">
+      <% if item.image.attached? %>
+      <%= link_to admin_item_path(item) do %>
+        <%= image_tag item.image, size: "90x120" %>
+      <% end %>
+      <% else %>
+      <%= link_to admin_item_path(item) do %>
+        <%= image_tag 'no_image', size: "90x120" %>
+      <% end %>
+      <% end %></br>
+      <%= item.created_at.strftime('%Y/%m/%d') %></br>
+      ♥<%= item.favorites.count %> いいね</br>
+      <%= item.customer.name %>
+      </div>
+    <% end %>
+    <div class = "col-md-2 py-3"></div>
+  </div>
+</div>

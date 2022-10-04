@@ -1,0 +1,60 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3 mx-auto"></div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <h4>投稿編集画面</h4>
+    </div>
+    <div class = "col-md-1 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "300x500" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "300x500" %>
+      <% end %>
+    </div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <%= form_with model: @item, url: item_path(@item), method: :patch do |f| %>
+      <div class = "field">
+        <div class = "row">
+          <div class = "col-md-1 py-3 mx-auto"></div>
+          <div class = "col-md-2 py-3 mx-auto"><%= f.label :商品名 %></div>
+          <div class = "col-md-3 py-3 mx-auto"><%= f.text_field :name, size: "50×20" %></div>
+        </div>
+        <div class = "row">
+          <div class = "col-md-1 py-3 mx-auto"></div>
+          <div class = "col-md-2 py-3 mx-auto">
+            <%= f.label :タグ %></br>
+          </div>
+          <div class = "col-md-3 py-3 mx-auto">
+            <%= f.collection_check_boxes(:tag_id, Tag.all, :id, :name, include_hidden: false) do |tag| %>
+              <div class='form-check'>
+              <%= tag.label class: 'form-check-label' do %>
+              <%= tag.check_box class: 'form-check-input' %>
+              <%= tag.text %>
+              <% end %>
+              </div>
+            <% end %>
+            ※一つを選んでください
+          </div>
+        </div>
+        <div class = "row">
+          <div class = "col-md-1 py-3 mx-auto"></div>
+          <div class = "col-md-2 py-3 mx-auto"><%= f.label :商品説明 %></div>
+          <div class = "col-md-3 py-3 mx-auto"><%= f.text_area :introduction, size: "43×8" %></div>
+        </div>
+      </div>
+      <p style = "line-height:2rem"></p>
+      <div class="actions">
+        <div class = "row">
+          <div class = "col-md-5"></div>
+          <div class = "col-md-2"><%= f.submit "変更を保存", class: "btn btn-sm btn-warning btn-text-light" %></div>
+          <div class = "col-md-5"></div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

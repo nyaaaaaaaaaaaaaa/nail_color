@@ -1,0 +1,27 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-10 py-3">
+      <h4>会員一覧（全<%= @customers.count %>件）</h4>
+    </div>
+  </div>
+  <div class = "row">
+    <table class = "table">
+      <thead>
+        <th>会員ID</th>
+        <th>ユーザーネーム</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </thead>
+      <% @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.name, admin_customer_path(customer.id) %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.is_active %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

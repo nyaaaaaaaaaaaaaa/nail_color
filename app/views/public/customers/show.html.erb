@@ -1,0 +1,66 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-1 py-3 mx-auto"></div>
+    <div class = "col-md-10 py-3 mx-auto">
+      <h4>マイページ</h4>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto">ユーザーネーム</div>
+    <div class = "col-md-3 py-3 mx-auto"><%= @customer.name %></div>
+    <div class = "col-md-5 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto">メールアドレス</div>
+    <div class = "col-md-3 py-3 mx-auto"><%= @customer.email %></div>
+    <div class = "col-md-5 py-3 mx-auto">
+      <%= link_to customers_information_edit_path, class: "btn btn-sm btn-success btn-text-light" do %>
+      編集する
+      <% end %>
+    </div>
+  </div>
+  <p style = "line-height:2rem"></p>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto text-center">
+      <%= link_to new_item_path, class: "btn btn-sm btn-warning btn-text-light" do %>
+      新規投稿
+      <% end %>
+    </div>
+    <div class = "col-md-4 py-3 mx-auto">新しく投稿する</div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto text-center">
+      <%= link_to customers_itemsindex_path, class: "btn btn-sm btn-primary btn-text-light" do %>
+      マイ投稿一覧
+      <% end %>
+    </div>
+    <div class = "col-md-4 py-3 mx-auto">自分の投稿履歴を見る</div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto text-center">
+      <%= link_to favorites_path, class: "btn btn-sm btn-danger btn-text-light" do %>
+      ♡いいね一覧
+      <% end %>
+    </div>
+    <div class = "col-md-4 py-3 mx-auto">自分がいいねをした投稿を見る</div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto text-center">
+      <%= link_to customers_commentsindex_path, class: "btn btn-sm btn-info btn-text-light" do %>
+      コメント一覧
+      <% end %>
+    </div>
+    <div class = "col-md-4 py-3 mx-auto">自分のコメント履歴を見る</div>
+    <div class = "col-md-3 py-3 mx-auto"></div>
+  </div>
+</div>

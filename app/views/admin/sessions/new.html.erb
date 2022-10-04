@@ -1,0 +1,41 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-10 py-3 mx-auto">
+      <h2>管理者ログイン</h2>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-12 py-3 mx-auto">
+      <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
+      <p style = "line-height:2rem"></p>
+      <div class="field">
+        <div class = "row">
+          <div class = "col-md-2"></div>
+          <div class = "col-md-3"><%= f.label :メールアドレス %></div>
+          <div class = "col-md-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40×20" %></div>
+        </div>
+      </div>
+      <p style = "line-height:2rem"></p>
+      <div class="field">
+        <div class = "row">
+          <div class = "col-md-2"></div>
+          <div class = "col-md-3"><%= f.label :パスワード %></div>
+          <div class = "col-md-3"><%= f.password_field :password, autocomplete: "current-password" %></div>
+        </div>
+      </div>
+      <div class></br></div>
+      <div class="actions">
+        <div class = "row">
+          <div class = "col-md-5"></div>
+          <div class = "col-md-2"><%= f.submit "ログイン", class: "btn btn-sm btn-success btn-text-light" %></div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- adminsをadminに変更-->
+<%#= render "admin/shared/links" %>
+

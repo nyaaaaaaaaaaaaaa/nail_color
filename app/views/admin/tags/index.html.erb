@@ -1,0 +1,15 @@
+<h1>管理者側タグ一覧</h1>
+Tag.create([
+  { name: 'ネイルケア' },
+  { name: 'ポリッシュ（マニキュア）' },
+  { name: 'ジェルネイル' },
+  { name: 'ネイルシール' },
+  { name: 'ネイルチップ' },
+  { name: 'スカルプチュア' },
+  { name: 'その他' }
+])
+
+<%= form_tag({controller:"tags",action:"index"}, method: :get) do %>
+    <%= text_field_tag :tag %>
+    <%= submit_tag 'タグを追加' %>
+<% end %>

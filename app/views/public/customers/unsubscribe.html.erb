@@ -1,0 +1,34 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-8 py-3 mx-auto text-center">
+      <h2><strong>本当に退会しますか？</strong></h2>
+    </div>
+    <div class = "col-md-2 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-2 py-3 mx-auto"></div>
+    <div class = "col-md-8 py-3 mx-auto text-center">
+      退会すると、会員登録情報やこれまでの投稿内容、</br>
+      いいねした投稿の閲覧等ができなくなります。</br>
+      <p style = "line-height:2rem"></p>
+      退会する場合は、「退会する」をクリックしてください。</br>
+    </div>
+    <div class = "col-md-2 py-3 mx-auto"></div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-3 py-3 mx-auto"></div>
+    <div class = "col-md-2 py-3 mx-auto">
+      <%= link_to customers_my_page_path, class: "btn btn-sm btn-primary btn-text-light" do %>
+      退会しない
+      <% end %>
+    </div>
+    <div class = "col-md-2 py-3 mx-auto">
+      <%= link_to customers_withdraw_path, method: :patch, data: { confirm: "【確認】退会してもよろしいですか？" }, class: "btn btn-sm btn-danger btn-text-light" do %>
+      退会する
+      <% end %>
+    </div>
+    <div class = "col-md-2 py-3 mx-auto"></div>
+  </div>
+</div>

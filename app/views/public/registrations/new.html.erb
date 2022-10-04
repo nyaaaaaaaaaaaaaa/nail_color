@@ -1,0 +1,62 @@
+<p id = "notice"></p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-10 py-3 mx-auto">
+      <h2>新規会員登録</h2>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-12 py-3 mx-auto">
+      <%= form_with model: @customer, url: registration_path(resource_name), local: true do |f| %>
+        <!-- publicsをpublicに変更-->
+        <%= render "public/shared/error_messages", resource: resource %>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-md-2"></div>
+            <div class = "col-md-3"><%= f.label :ユーザーネーム %></div>
+            <div class = "col-md-3"><%= f.text_field :name, size: "40×20" %></div>
+          </div>
+        </div>
+        <p style = "line-height:2rem"></p>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-md-2"></div>
+            <div class = "col-md-3"><%= f.label :メールアドレス %></div>
+            <div class = "col-md-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40×20" %></div>
+          </div>
+        </div>
+        <p style = "line-height:2rem"></p>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-md-2"></div>
+            <div class = "col-md-3"><%= f.label :パスワード（6文字以上） %></div>
+            <div class = "col-md-3">
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+          </div>
+        </div>
+        <p style = "line-height:2rem"></p>
+        <div class="field">
+          <div class = "row">
+            <div class = "col-md-2"></div>
+            <div class = "col-md-3"><%= f.label :パスワード（確認用） %></div>
+            <div class = "col-md-3">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+          </div>
+        </div>
+        <div class></br></div>
+        <div class="actions">
+          <div class = "row">
+            <div class = "col-md-5"></div>
+            <div class = "col-md-2">
+            <%= f.submit "新規登録", class: "btn btn-sm btn-success btn-text-light" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!-- publicsをpublicに変更-->
+      <!--<%= render "public/shared/links" %>-->
+    </div>
+  </div>
+</div>
