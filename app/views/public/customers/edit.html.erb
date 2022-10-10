@@ -22,12 +22,18 @@
     </div>
     <div class = "row">
       <div class = "col-md-4 py-3 mx-auto"></div>
-      <div class = "col-md-3 py-3 mx-auto"><%= f.submit '登録情報の変更', class: "btn btn-sm btn-success btn-text-light" %></div>
+      <% unless current_customer.email == "guest@example.com" %>
+       <div class = "col-md-3 py-3 mx-auto">
+       <%= f.submit '登録情報の変更', class: "btn btn-sm btn-success btn-text-light" %>
+      </div>
+      <% end %>
   <% end %>
       <div class = "col-md-1 py-3 mx-auto"></div>
       <div class = "col-md-4 py-3 mx-auto">
-        <%= link_to customers_unsubscribe_path, class: "btn btn-sm btn-danger btn-text-light" do %>
-        退会する
+        <% unless current_customer.email == "guest@example.com" %>
+          <%= link_to customers_unsubscribe_path, class: "btn btn-sm btn-danger btn-text-light" do %>
+          退会する
+          <% end %>
         <% end %>
       </div>
     </div>
